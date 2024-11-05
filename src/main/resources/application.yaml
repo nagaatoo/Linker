@@ -1,0 +1,41 @@
+debug: true
+logging:
+  level:
+    root: DEBUG
+spring:
+  application:
+  name: linker
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:postgresql://localhost:5432/linker
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      max-lifetime: 1000
+      auto-commit: true
+
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    enabled: true
+    drop-first: false
+    default-schema: public
+    change-log: classpath:/db/changelog/master.yml
+
+bot:
+  created-id:
+  name: Linker_hr_bot
+  token:
